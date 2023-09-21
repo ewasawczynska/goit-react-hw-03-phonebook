@@ -25,11 +25,9 @@ export default class App extends Component {
     }
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate(prevProps, prevState) {
     const { contacts } = this.state;
-    if (contacts !== prevState.contacts) {
-      this.updateLocaleStorage(contacts);
-    }
+    this.updateLocaleStorage(contacts);
     if (contacts.length === 0) {
       localStorage.removeItem(CONTACTS_LOCAL_STORAGE_KEY);
     }
